@@ -8,3 +8,7 @@ exports.clamp = function(x, min, max) {
 
     return x;
 }
+
+exports.clampedRandom = function(min, max) {
+    return min + Math.random() * (max - min);
+}

@@ -2,10 +2,11 @@ const { Hittable } = require('../hittable');
 const { Vec3 } = require('../vec3');
 
 class Sphere extends Hittable {
-    constructor(origin, radius) {
+    constructor(origin, radius, material) {
         super();
         this.origin = origin;
         this.radius = radius;
+        this.material = material;
     }
 
     hit(r, tMin, tMax, rec) {
@@ -18,11 +19,11 @@ class Sphere extends Hittable {
         if(d > 0) {
             let t = ((-1 * b) - Math.sqrt(d)) / a;
             if(t < tMax && t > tMin) {
-                return assignHit(t, this.origin, this.radius);
+                return assignHit(t, this.origin, this.radius, this.material);
             }
             t = ((-1 * b) + Math.sqrt(d)) / a;
             if(t < tMax && t > tMin) {
-                return assignHit(t, this.origin, this.radius);
+                return assignHit(t, this.origin, this.radius, this.material);
             }
         }
 
@@ -33,6 +34,7 @@ class Sphere extends Hittable {
             rec.t = iv;
             rec.p = r.at(rec.t);
             rec.normal = rec.p.sub(ic).div(ir);
+            rec.material = ms;
 
             return true;
         }

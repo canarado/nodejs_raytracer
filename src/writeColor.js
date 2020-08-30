@@ -9,9 +9,9 @@ module.exports = function writeColor(vec, samples) {
 
     let scale = 1 / samples;
 
-    r *= scale;
-    g *= scale;
-    b *= scale;
+    r = Math.sqrt(scale * r);
+    g = Math.sqrt(scale * g);
+    b = Math.sqrt(scale * b);
 
     console.log(
         `${256 * clamp(r, 0, 0.999)} ${256 * clamp(g, 0, 0.999)} ${256 * clamp(b, 0, 0.999)}\n`
