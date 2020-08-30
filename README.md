@@ -1,0 +1,1 @@
+some simple raytracer with inspiration from "Ray Tracing in One Weekend" or something, probably like the third raytracer ive written, i just wanna use node instead of rust this time around
